@@ -114,7 +114,7 @@ class DailyCrawler:
         """
 
         # 通过tushare的基本信息API，获取所有股票的基本信息
-        stock_df = ts.get_stock_basics()
+        stock_df = ts.pro_api().stock_basic()
         # 将基本信息的索引列表转化为股票代码列表
         codes = list(stock_df.index)
 

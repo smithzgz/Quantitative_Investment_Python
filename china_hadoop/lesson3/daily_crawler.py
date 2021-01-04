@@ -114,9 +114,9 @@ class DailyCrawler:
         """
 
         # 通过tushare的基本信息API，获取所有股票的基本信息
-        stock_df = ts.get_stock_basics()
+        stock_df = ts.pro_api().stock_basic()
         # 将基本信息的索引列表转化为股票代码列表
-        codes = list(stock_df.index)
+        codes = list(stock_df.ts_code)
 
         # 当前日期
         now = datetime.now().strftime('%Y-%m-%d')
@@ -141,6 +141,7 @@ class DailyCrawler:
 
 # 抓取程序的入口函数
 if __name__ == '__main__':
+    ts.set_token("47105aced0d886b2c9544eccf752c1b952eb109379a80def6119691f")
     dc = DailyCrawler()
     # 抓取指定日期范围的指数日行情
     # 这两个参数可以根据需求改变，时间范围越长，抓取时花费的时间就会越长
