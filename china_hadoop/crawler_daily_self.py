@@ -59,8 +59,11 @@ class DailyCrawler:
 
         for code in codes:
             # 抓取不复权的价格
-            df_daily = ts.pro_api().daily(ts_code=code, start_date=begin_date, end_date=end_date)
-            self.save_data(code, df_daily, self.daily, {'index': False})
+            # df_daily = ts.pro_api().daily(ts_code=code, start_date=begin_date, end_date=end_date)
+            # self.save_data(code, df_daily, self.daily, {'index': False})
+            # 抓取后复权的价格
+            df_daily_hfq = ts.pro_bar(code, adj='hfq', start_date=begin_date, end_date=end_date)
+            self.save_data(code, df_daily_hfq, self.daily_hfq, {'index': False})
 
     # 存储到数据库
     def save_data(self, code, df_daily, collection, extra_fields=None):

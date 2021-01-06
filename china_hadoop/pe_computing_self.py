@@ -33,7 +33,7 @@ def compute_pe():
     for code in codes:
         print('计算市盈率, %s' % code)
         daily_cursor = daily_collection.find(
-            {'code': code, 'index': True},
+            {'code': code},
             projection={'close': True, 'date': True})
 
         update_requests = []
@@ -56,13 +56,12 @@ def compute_pe():
 
             # 计算PE
             if eps != 0:
-                update_requests.append(UpdateOne(
-                    {'code': code, 'date': _date, 'index': False},
-                    {'$set': {'pe': round(daily['close'] / eps, 4)}}))
-
-        if len(update_requests) > 0:
-            update_result = daily_collection.bulk_write(update_requests, ordered=False)
-            print('更新PE, %s, 更新：%d' % (code, update_result.modified_count))
+                try:
+                    update_result = daily_collection.update_one({'code': code, 'date': _date},
+                                                            {'$set': {'pe': round(daily['close'] / eps)}}, True)
+                    print('111111111更新PE, %s, 更新：%d' % (code, update_result.modified_count))
+                except Exception as e:
+                    print(code+"______"+_date)
 
 
 if __name__ == "__main__":
