@@ -174,6 +174,20 @@ def stock_pool(begin_date, end_date):
     # 返回结果
     return all_adjust_dates, adjust_date_codes_dict
 
+def find_out_stocks(last_phase_codes, this_phase_codes):
+    """
+    找到上期入选本期被调出的股票，这些股票将必须卖出
+    :param last_phase_codes: 上期的股票列表
+    :param this_phase_codes: 本期的股票列表
+    :return: 被调出的股票列表
+    """
+    out_stocks = []
+
+    for code in last_phase_codes:
+        if code not in this_phase_codes:
+            out_stocks.append(code)
+
+    return out_stocks
 
 # 股票池的入口函数
 if __name__ == "__main__":

@@ -101,6 +101,26 @@ def compute_macd(begin_date, end_date):
         except:
             print('error: %s' % code, flush=True)
 
+def is_macd_gold(code, date):
+    """
+    判断某只股票在某个交易日是否出现MACD金叉信号
+    :param code: 股票代码
+    :param date: 日期
+    :return: True - 有金叉信号，False - 无金叉信号
+    """
+    count = DB_CONN['macd'].count({'code': code, 'date': date, 'signal': 'gold'})
+    return count == 1
+
+
+def is_macd_dead(code, date):
+    """
+    判断某只股票在某个交易日是否出现MACD死叉信号
+    :param code: 股票代码
+    :param date: 日期
+    :return: True - 有死叉信号，False - 无死叉信号
+    """
+    count = DB_CONN['macd'].count({'code': code, 'date': date, 'signal': 'dead'})
+    return count == 1
 
 if __name__ == '__main__':
     compute_macd('20150101', '20151231')
