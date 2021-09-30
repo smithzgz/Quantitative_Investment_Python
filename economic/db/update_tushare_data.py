@@ -1,6 +1,6 @@
 import time
 import MySQLdb
-import tushare as ts
+import tushare_test as ts
 from constants_table import Constants
 from generate_sql import GenerateSql
 from init_tushare_data import InitTushareData

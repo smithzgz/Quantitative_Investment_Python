@@ -1,5 +1,5 @@
 import pandas as pd  # 该工具是为解决数据分析任务而创建的
-import tushare as ts
+import tushare_test as ts
 import matplotlib as mpl
 import plotly
 import arrow

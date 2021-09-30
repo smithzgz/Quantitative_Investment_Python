@@ -12,7 +12,7 @@
 
 from datetime import datetime, timedelta
 
-import tushare as ts
+import tushare_test as ts
 from pymongo import UpdateOne
 
 from database import DB_CONN

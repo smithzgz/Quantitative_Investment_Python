@@ -1,7 +1,7 @@
 import sys
 import MySQLdb
 import time
-import tushare as ts
+import tushare_test as ts
 from constants_table import Constants
 from generate_sql import GenerateSql
 import pandas as pd

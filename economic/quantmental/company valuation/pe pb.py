@@ -1,7 +1,7 @@
 import matplotlib.pyplot as plt
 
 import generate_query_interface as query
-import tushare as ts
+import tushare_test as ts
 import pandas as pd
 from sqlalchemy import create_engine
 

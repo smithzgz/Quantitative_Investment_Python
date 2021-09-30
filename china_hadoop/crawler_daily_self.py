@@ -2,7 +2,7 @@
 
 from pymongo import UpdateOne
 from database_self import DB_CONN
-import tushare as ts
+import tushare_test as ts
 from datetime import datetime
 
 
